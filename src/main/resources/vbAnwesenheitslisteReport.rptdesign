@@ -10,7 +10,7 @@
         <scalar-parameter name="TrainingsTag" id="399">
             <text-property name="promptText">Trainingstag auswählen</text-property>
             <property name="valueType">static</property>
-            <property name="isRequired">true</property>
+            <property name="isRequired">false</property>
             <property name="dataType">string</property>
             <property name="distinct">true</property>
             <simple-property-list name="defaultValue">
@@ -41,11 +41,26 @@
             <property name="dataType">string</property>
             <property name="distinct">true</property>
             <simple-property-list name="defaultValue">
-                <value type="constant">WS 2013</value>
+                <value type="constant">SS 2014</value>
             </simple-property-list>
-            <list-property name="selectionList"/>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">WS 2013</property>
+                </structure>
+                <structure>
+                    <property name="value">SS 2014</property>
+                </structure>
+                <structure>
+                    <property name="value">WS 2014</property>
+                </structure>
+                <structure>
+                    <property name="value">SS 2015</property>
+                </structure>
+            </list-property>
             <property name="paramType">simple</property>
-            <property name="controlType">text-box</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
             <structure name="format">
                 <property name="category">Unformatted</property>
             </structure>

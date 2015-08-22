@@ -163,35 +163,35 @@
                 <structure>
                     <property name="position">1</property>
                     <property name="name">id</property>
-                    <property name="nativeName">id</property>
+                    <property name="nativeName">ID</property>
                     <property name="dataType">integer</property>
                     <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">name</property>
-                    <property name="nativeName">name</property>
+                    <property name="nativeName">NAME</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">firstName</property>
-                    <property name="nativeName">firstName</property>
+                    <property name="nativeName">FIRSTNAME</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">birthdate</property>
-                    <property name="nativeName">birthdate</property>
+                    <property name="nativeName">BIRTHDATE</property>
                     <property name="dataType">date</property>
                     <property name="nativeDataType">91</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
                     <property name="name">geschlecht</property>
-                    <property name="nativeName">geschlecht</property>
+                    <property name="nativeName">GESCHLECHT</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
@@ -202,7 +202,7 @@ from spieler
 where 
 spieler.id in (SELECT spielabend.spieler_id FROM spielabend 
 WHERE spielabend.wochen_tag = ?)
-AND spieler.aktiv ='1']]></xml-property>
+AND spieler.active ='1']]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
