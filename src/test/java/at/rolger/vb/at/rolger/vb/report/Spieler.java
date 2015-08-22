@@ -13,6 +13,8 @@ public class Spieler {
 	private String address;
 	private LocalDate birthdate;
 	private String telefon;
+	private String sex = "M";
+	private boolean active;
 	private List<String> abende;
 
 	public int getId() {
@@ -72,6 +74,7 @@ public class Spieler {
 				+ getBirthdate();
 		str += "\n\t" + getAddress();
 		str += "\n\t" + getTelefon();
+		str += "\n\t" + getSex();
 
 		str += "\n\t";
 
@@ -88,5 +91,21 @@ public class Spieler {
 
 	public void setAbende(List<String> abende) {
 		this.abende = abende;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 }
