@@ -41,7 +41,7 @@
             <property name="dataType">string</property>
             <property name="distinct">true</property>
             <simple-property-list name="defaultValue">
-                <value type="constant">SS 2014</value>
+                <value type="constant">WS 2015</value>
             </simple-property-list>
             <list-property name="selectionList">
                 <structure>
@@ -55,6 +55,12 @@
                 </structure>
                 <structure>
                     <property name="value">SS 2015</property>
+                </structure>
+                <structure>
+                    <property name="value">WS 2015</property>
+                </structure>
+                <structure>
+                    <property name="value">SS 2016</property>
                 </structure>
             </list-property>
             <property name="paramType">simple</property>
