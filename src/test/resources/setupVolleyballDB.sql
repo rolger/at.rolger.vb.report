@@ -1,7 +1,7 @@
 CREATE SCHEMA `volleyball`;
 
 CREATE TABLE `volleyball`.`spielabend` (
-  `ID` INT NOT NULL,
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `TAG` DATE NULL,
   `SPIELER_ID` INT NULL,
   `WOCHEN_TAG` INT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `volleyball`.`spielabend` (
 
   
 CREATE TABLE `volleyball`.`spieler` (
-  `ID` INT NOT NULL,
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `FIRSTNAME` VARCHAR(45) NULL,
   `NAME` VARCHAR(45) NULL,
   `GESCHLECHT` VARCHAR(45) NULL DEFAULT 'M',
