@@ -1,42 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.3.1.v201309091055 Build &lt;4.3.1.v20130917-1035></property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">105</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">105</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">105</property>
+        </structure>
+    </list-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">fixed layout</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">120</property>
-    <parameters>
-        <scalar-parameter name="TrainingsTag" id="399">
-            <text-property name="promptText">Trainingstag auswählen</text-property>
-            <property name="valueType">static</property>
-            <property name="isRequired">true</property>
-            <property name="dataType">string</property>
-            <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="constant">1</value>
-            </simple-property-list>
-            <list-property name="selectionList">
-                <structure>
-                    <property name="value">1</property>
-                    <property name="label">Montag</property>
-                </structure>
-                <structure>
-                    <property name="value">4</property>
-                    <property name="label">Donnerstag</property>
-                </structure>
-            </list-property>
-            <property name="paramType">simple</property>
-            <property name="controlType">list-box</property>
-            <property name="mustMatch">true</property>
-            <property name="fixedOrder">true</property>
-            <structure name="format">
-                <property name="category">Unformatted</property>
-            </structure>
-        </scalar-parameter>
-    </parameters>
     <data-sources>
-        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="VB" id="7">
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="VB local" id="7">
             <list-property name="privateDriverProperties">
                 <ex-property>
                     <name>metadataBidiFormatStr</name>
@@ -58,6 +43,28 @@
             <property name="odaUser">root</property>
             <encrypted-property name="odaPassword" encryptionID="base64">cm9vdA==</encrypted-property>
         </oda-data-source>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="VB Heroku" id="456">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/d8gujkr40h33o2</property>
+            <property name="odaUser">umxvddxnindwuv</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">MDA5OGZiNDI0ZTllNjEzMGE3NDE0YmEwNjgwMWU4NzhhMTc2MjMwYzMyYzI4MzhiM2UxMjZiM2FmNjM0OWRmNg==</encrypted-property>
+        </oda-data-source>
     </data-sources>
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Aktive Spieler nach Platz" id="105">
@@ -69,8 +76,8 @@
                     <property name="dataType">integer</property>
                 </structure>
                 <structure>
-                    <property name="name">Name</property>
-                    <expression name="expression">row["name"] + " " + row["firstName"]</expression>
+                    <property name="name">fullname</property>
+                    <expression name="expression">row["name"] + " " + row["firstname"]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -88,10 +95,10 @@
                     <text-property name="heading">name</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">firstName</property>
+                    <property name="columnName">firstname</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">firstName</text-property>
-                    <text-property name="heading">firstName</text-property>
+                    <text-property name="displayName">firstname</text-property>
+                    <text-property name="heading">firstname</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">birthdate</property>
@@ -100,31 +107,31 @@
                     <text-property name="heading">birthdate</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">geschlecht</property>
+                    <property name="columnName">sex</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">geschlecht</text-property>
-                    <text-property name="heading">geschlecht</text-property>
+                    <text-property name="displayName">sex</text-property>
+                    <text-property name="heading">sex</text-property>
                 </structure>
-            </list-property>
-            <list-property name="parameters">
                 <structure>
-                    <property name="name">param_wochentag</property>
-                    <property name="paramName">TrainingsTag</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">-1</property>
-                    <property name="position">1</property>
-                    <expression name="defaultValue" type="javascript">MO</expression>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
+                    <property name="columnName">membernumber</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">membernumber</text-property>
+                    <text-property name="heading">membernumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">active</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">active</text-property>
+                    <text-property name="heading">active</text-property>
                 </structure>
             </list-property>
+            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
                         <property name="name">id</property>
-                        <property name="dataType">integer</property>
+                        <property name="dataType">decimal</property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
@@ -133,7 +140,7 @@
                     </structure>
                     <structure>
                         <property name="position">3</property>
-                        <property name="name">firstName</property>
+                        <property name="name">firstname</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
@@ -143,87 +150,89 @@
                     </structure>
                     <structure>
                         <property name="position">5</property>
-                        <property name="name">geschlecht</property>
+                        <property name="name">sex</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">6</property>
+                        <property name="name">membernumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">active</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
                         <property name="name">Anwesend</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
-                        <property name="position">7</property>
-                        <property name="name">Name</property>
+                        <property name="position">9</property>
+                        <property name="name">fullname</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
             </structure>
-            <property name="dataSource">VB</property>
+            <property name="dataSource">VB Heroku</property>
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
                     <property name="name">id</property>
-                    <property name="nativeName">ID</property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">name</property>
-                    <property name="nativeName">NAME</property>
+                    <property name="nativeName">name</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
-                    <property name="name">firstName</property>
-                    <property name="nativeName">FIRSTNAME</property>
+                    <property name="name">firstname</property>
+                    <property name="nativeName">firstname</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">birthdate</property>
-                    <property name="nativeName">BIRTHDATE</property>
+                    <property name="nativeName">birthdate</property>
                     <property name="dataType">date</property>
                     <property name="nativeDataType">91</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
-                    <property name="name">geschlecht</property>
-                    <property name="nativeName">GESCHLECHT</property>
+                    <property name="name">sex</property>
+                    <property name="nativeName">sex</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">membernumber</property>
+                    <property name="nativeName">membernumber</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">active</property>
+                    <property name="nativeName">active</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-7</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select 
-spieler.id, spieler.name, spieler.firstName, spieler.birthdate, spieler.geschlecht
+spieler.id, spieler.name, spieler.firstname, spieler.birthdate, spieler.sex, spieler.membernumber, spieler.active
 from spieler
 where 
-spieler.id in (SELECT spielabend.spieler_id FROM spielabend 
-WHERE spielabend.wochen_tag = ?)
-AND spieler.active ='1']]></xml-property>
-            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
-  <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
-</model:DesignValues>]]></xml-property>
+spieler.active = '1'
+order by 2]]></xml-property>
         </oda-data-set>
     </data-sets>
     <styles>
@@ -272,7 +281,7 @@ AND spieler.active ='1']]></xml-property>
     </page-setup>
     <body>
         <grid id="407">
-            <property name="height">1.4083333333333334in</property>
+            <property name="height">2.675in</property>
             <column id="408"/>
             <row id="411">
                 <cell id="412"/>
@@ -288,108 +297,131 @@ AND spieler.active ='1']]></xml-property>
                 </cell>
             </row>
             <row id="419">
-                <property name="height">0.8166666666666667in</property>
+                <property name="height">2.0833333333333335in</property>
                 <cell id="420">
                     <text-data id="444">
                         <property name="fontSize">18pt</property>
                         <property name="textAlign">center</property>
-                        <expression name="valueExpr">"Reichsapfelgasse Volleyball " + (params["TrainingsTag"].value=="1" ? "Mo" : "Do")</expression>
+                        <expression name="valueExpr">"Reichsapfelgasse Volleyball "</expression>
                         <property name="contentType">html</property>
                     </text-data>
+                    <grid id="509">
+                        <property name="height">0.21666666666666667in</property>
+                        <column id="510"/>
+                        <column id="511"/>
+                        <row id="512">
+                            <property name="height">0.21666666666666667in</property>
+                            <cell id="513"/>
+                            <cell id="514"/>
+                        </row>
+                    </grid>
+                    <table id="463">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="dataSet">Aktive Spieler nach Platz</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">birthdate</property>
+                                <text-property name="displayName">birthdate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["birthdate"]</expression>
+                                <property name="dataType">date</property>
+                            </structure>
+                            <structure>
+                                <property name="name">membernumber</property>
+                                <text-property name="displayName">membernumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["membernumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fullname</property>
+                                <text-property name="displayName">fullname</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fullname"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <column id="482"/>
+                        <column id="485">
+                            <property name="repeat">1</property>
+                        </column>
+                        <column id="483"/>
+                        <column id="484"/>
+                        <header>
+                            <row id="464">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">thin</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">thin</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">thin</property>
+                                <property name="height">0.36666666666666664in</property>
+                                <cell id="465">
+                                    <label id="466">
+                                        <property name="textAlign">left</property>
+                                        <text-property name="text">Name</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="486">
+                                    <label id="487">
+                                        <property name="textAlign">right</property>
+                                        <text-property name="text">Geburstdatum</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="467">
+                                    <label id="468">
+                                        <property name="textAlign">right</property>
+                                        <text-property name="text">Mitglied</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="469">
+                                    <label id="470">
+                                        <text-property name="text">Bezahlt</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="471">
+                                <property name="height">0.26666666666666666in</property>
+                                <cell id="472">
+                                    <data id="492">
+                                        <property name="resultSetColumn">fullname</property>
+                                    </data>
+                                </cell>
+                                <cell id="488">
+                                    <data id="491">
+                                        <property name="textAlign">right</property>
+                                        <property name="resultSetColumn">birthdate</property>
+                                    </data>
+                                </cell>
+                                <cell id="474">
+                                    <data id="475">
+                                        <property name="textAlign">right</property>
+                                        <property name="resultSetColumn">membernumber</property>
+                                    </data>
+                                </cell>
+                                <cell id="476"/>
+                            </row>
+                        </detail>
+                        <footer>
+                            <row id="478">
+                                <property name="height">0.19166666666666668in</property>
+                                <cell id="479"/>
+                                <cell id="490"/>
+                                <cell id="480"/>
+                                <cell id="481"/>
+                            </row>
+                        </footer>
+                    </table>
                 </cell>
             </row>
         </grid>
-        <table id="423">
-            <property name="width">7.941666666666666in</property>
-            <property name="dataSet">Aktive Spieler nach Platz</property>
-            <list-property name="boundDataColumns">
-                <structure>
-                    <property name="name">birthdate</property>
-                    <text-property name="displayName">birthdate</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["birthdate"]</expression>
-                    <property name="dataType">date</property>
-                </structure>
-                <structure>
-                    <property name="name">Name</property>
-                    <text-property name="displayName">Name</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Name"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-            </list-property>
-            <list-property name="sort">
-                <structure>
-                    <expression name="key" type="javascript">row["Name"]</expression>
-                    <property name="direction">asc</property>
-                    <property name="strength">-1</property>
-                </structure>
-            </list-property>
-            <column id="448">
-                <property name="width">1.6333333333333333in</property>
-            </column>
-            <column id="436">
-                <property name="suppressDuplicates">false</property>
-                <property name="width">2.716666666666667in</property>
-            </column>
-            <column id="437">
-                <property name="repeat">1</property>
-                <property name="suppressDuplicates">false</property>
-                <property name="width">1.3416666666666666in</property>
-            </column>
-            <column id="454">
-                <property name="repeat">1</property>
-                <property name="suppressDuplicates">false</property>
-                <property name="width">2.25in</property>
-            </column>
-            <header>
-                <row id="424">
-                    <property name="height">0.30833333333333335in</property>
-                    <cell id="445"/>
-                    <cell id="425">
-                        <label id="439">
-                            <property name="textAlign">left</property>
-                            <text-property name="text">Name</text-property>
-                        </label>
-                    </cell>
-                    <cell id="426">
-                        <label id="441">
-                            <property name="textAlign">left</property>
-                            <text-property name="text">GEBDAT</text-property>
-                        </label>
-                    </cell>
-                    <cell id="451">
-                        <text id="455">
-                            <property name="contentType">auto</property>
-                            <text-property name="content"><![CDATA[Bezahlt]]></text-property>
-                        </text>
-                    </cell>
-                </row>
-            </header>
-            <detail>
-                <row id="428">
-                    <property name="height">0.3in</property>
-                    <cell id="446"/>
-                    <cell id="429">
-                        <data id="440">
-                            <property name="resultSetColumn">Name</property>
-                        </data>
-                    </cell>
-                    <cell id="430">
-                        <data id="442">
-                            <property name="textAlign">left</property>
-                            <property name="resultSetColumn">birthdate</property>
-                        </data>
-                    </cell>
-                    <cell id="452"/>
-                </row>
-            </detail>
-            <footer>
-                <row id="432">
-                    <cell id="447"/>
-                    <cell id="433"/>
-                    <cell id="434"/>
-                    <cell id="453"/>
-                </row>
-            </footer>
-        </table>
     </body>
 </report>

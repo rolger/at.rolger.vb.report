@@ -1,4 +1,4 @@
- package at.rolger.vb.at.rolger.vb.report
+package at.rolger.vb.at.rolger.vb.report
 
 import java.sql.SQLException;
 import java.util.List;
@@ -121,10 +121,13 @@ void updateAnwesenheit(def Sql sql, def Spieler aSpieler) {
 class SQLPrinter extends Sql {
 
 	SQLPrinter() {
-		super(Sql.newInstance("jdbc:mysql://localhost:3306/volleyball", "root",	"root", "com.mysql.jdbc.Driver"))
+		super(Sql.newInstance("jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/d8gujkr40h33o2", 
+			"umxvddxnindwuv",	
+			"0098fb424e9e6130a7414ba06801e878a176230c32c2838b3e126b3af6349df6", 
+			"com.mysql.jdbc.Driver"))
+		// super(Sql.newInstance("jdbc:mysql://localhost:3306/volleyball", "root",	"root", "com.mysql.jdbc.Driver"))
 	}
 
-	@Override
 	public void open() {
 	}
 
@@ -172,6 +175,6 @@ class SQLPrinter extends Sql {
 	}
 }
 
-updateWith(Sql.newInstance("jdbc:mysql://localhost:3306/volleyball", "root", "root", "com.mysql.jdbc.Driver"))
-//updateWith(new SQLPrinter())
+//updateWith(Sql.newInstance("jdbc:mysql://localhost:3306/volleyball", "root", "root", "com.mysql.jdbc.Driver"))
+updateWith(new SQLPrinter())
 
